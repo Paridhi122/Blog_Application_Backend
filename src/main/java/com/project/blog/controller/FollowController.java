@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin()
 @RestController
@@ -34,9 +35,23 @@ public class FollowController {
         return followService.list(userService.getUserrId(principal),principal);
     }
 
+    @GetMapping("/getbloglist")
+    @ResponseBody
+    public List<List<Blog>> blogList(Principal principal){
+        return followService.blog(userService.getUserrId(principal),principal);
+    }
+
     @GetMapping("/following")
     @ResponseBody
     public int following(Principal principal){
         return followService.totalFollowing(userService.getUserrId(principal),principal);
     }
+
+    @GetMapping(value = "/unfollow/{f_id}")
+    @ResponseBody
+    public List<Follow> unfollow(@PathVariable Long f_id, Principal principal) {
+        return followService.unfollowUser(f_id,userService.getUserrId(principal),principal);
+    }
+
+
 }

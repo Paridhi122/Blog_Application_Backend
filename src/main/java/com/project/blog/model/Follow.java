@@ -22,6 +22,9 @@ public class Follow implements Serializable {
     @ManyToOne
     private Users following;
 
+    @ManyToOne
+    private Blog blog;
+
     public Follow(Users users, Users following) {
         this.users = users;
         this.following = following;
@@ -54,4 +57,11 @@ public class Follow implements Serializable {
         this.following = following;
     }
 
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
+    }
 }

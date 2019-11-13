@@ -28,14 +28,14 @@ public class BlogService {
 
     public List<Blog> showBlog(Long user_id, Principal principal){
         Users users = usersRepository.findByUserId(user_id);
-        return blogRepository.findAllByUsers(users);
+        return blogRepository.findAllByUsersOrderByCreatedAt(users);
     }
 
     public List<Blog> deleteBlogs(Long userid, Long blogid) {
         Users users = usersRepository.findByUserId(userid);
         Blog blog = blogRepository.findByBlogIdAndUsers(blogid,users);
         blogRepository.delete(blog);
-        return blogRepository.findAllByUsers(users);
+        return blogRepository.findAllByUsersOrderByCreatedAt(users);
     }
 
     public Blog update(Long user_id,Principal principal, Blog updated,Long blog_id){

@@ -65,6 +65,6 @@ public class BlogController {
     @ResponseBody
     public List<Blog> bloglist(@PathVariable Long user_id){
         Users users = usersRepository.findByUserId(user_id);
-        return blogRepository.findAllByUsers(users);
+        return blogRepository.findAllByUsersOrderByCreatedAt(users);
     }
 }

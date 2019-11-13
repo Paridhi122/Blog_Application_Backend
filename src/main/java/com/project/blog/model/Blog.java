@@ -93,7 +93,6 @@ public class Blog implements Serializable {
     }
 
     public LocalDate getCreatedAt() {
-        createdAt = LocalDate.now();
         return createdAt;
     }
 
@@ -102,7 +101,6 @@ public class Blog implements Serializable {
     }
 
     public LocalDate getUpdatedAt() {
-        updatedAt = LocalDate.now();
         return updatedAt;
     }
 
