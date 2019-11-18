@@ -3,6 +3,7 @@ package com.project.blog.controller;
 import com.project.blog.model.Users;
 import com.project.blog.repository.UsersRepository;
 import com.project.blog.service.UserService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,4 +51,5 @@ public class UsersController {
         Users updateduser = userRepository.save(user);
         return updateduser;
     }
+
 }

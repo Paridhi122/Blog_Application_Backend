@@ -26,7 +26,7 @@ public class FollowService {
         Users users = usersRepository.findByUserId(f_id);
         List<Blog> blogList = blogRepository.findAllByUsersOrderByCreatedAt(users);
         Users users1 = usersRepository.findByUserId(user_id);
-        Follow follow = new Follow(users1,users);
+        Follow follow = new Follow(users1,users,1);
         followRepository.save(follow);
         return blogList;
     }
@@ -47,15 +47,6 @@ public class FollowService {
         return followRepository.findAllByUsers(users);
     }
 
-    public int totalFollowing(Long user_id, Principal principal){
-        int count = 0;
-        Users users = usersRepository.findByUserId(user_id);
-        List<Follow> followList = followRepository.findAllByUsers(users);
-        for(Follow f: followList) {
-            count++;
-        }
-        return count;
-    }
 
     public List<Follow> unfollowUser(Long f_id, Long user_id, Principal principal) {
         Follow follow =  followRepository.findFollowByFollowId(f_id);
@@ -64,4 +55,17 @@ public class FollowService {
         return followRepository.findAllByUsers(users);
     }
 
+    public List<Follow> followers(Long user_id, Principal principal) {
+        List<Follow> followList = followRepository.findAllByFollowing_UserId(user_id);
+        return followList;
+    }
+
+    public int status(Long f_id,Long user_id,Principal principal){
+        Users users = usersRepository.findByUserId(user_id);
+        Follow follow = followRepository.findByUsersAndFollowing_UserId(users,f_id);
+        if(follow == null)
+            return 0;
+        else
+            return follow.getStatus();
+    }
 }

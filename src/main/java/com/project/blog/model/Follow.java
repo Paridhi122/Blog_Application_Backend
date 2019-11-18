@@ -4,7 +4,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+
 
 @Entity
 @Table(name="Follow")
@@ -22,12 +22,13 @@ public class Follow implements Serializable {
     @ManyToOne
     private Users following;
 
-    @ManyToOne
-    private Blog blog;
+    @Column(name = "status")
+    private int status;
 
-    public Follow(Users users, Users following) {
+    public Follow(Users users, Users following, int status) {
         this.users = users;
         this.following = following;
+        this.status = status;
     }
 
     public Follow () {
@@ -57,11 +58,11 @@ public class Follow implements Serializable {
         this.following = following;
     }
 
-    public Blog getBlog() {
-        return blog;
+    public int getStatus() {
+        return status;
     }
 
-    public void setBlog(Blog blog) {
-        this.blog = blog;
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

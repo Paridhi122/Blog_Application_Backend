@@ -55,16 +55,23 @@ public class BlogController {
         return blogService.update(userService.getUserrId(principal),principal,newBlog,blog_id);
     }
 
-    @GetMapping("/search/{title}/or/{content}")
+    @GetMapping("/search/{title}")
     @ResponseBody
-    public List<Blog> search(@PathVariable String title,@PathVariable String content){
-        return blogRepository.findAllByTitleContainingOrContentContaining(title,content);
+    public List<Blog> search(@PathVariable String title){
+        return blogRepository.findAllByTitleContaining(title);
     }
 
-    @GetMapping("getbyuser/{user_id}")
+    @GetMapping("/getbyuser/{user_id}")
     @ResponseBody
     public List<Blog> bloglist(@PathVariable Long user_id){
         Users users = usersRepository.findByUserId(user_id);
         return blogRepository.findAllByUsersOrderByCreatedAt(users);
     }
+
+    @GetMapping("/getall")
+    @ResponseBody
+    public List<Blog> bloglist(){
+        return blogRepository.findAllByStatus(0);
+    }
+
 }

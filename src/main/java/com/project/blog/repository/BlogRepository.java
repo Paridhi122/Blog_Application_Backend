@@ -11,8 +11,7 @@ import java.util.List;
 public interface BlogRepository extends JpaRepository<Blog,Long> {
     Blog findByBlogId(Long blog_id);
     List<Blog> findAllByUsersOrderByCreatedAt(Users users);
-    List<Blog> findAllByUsersAndStatus(Users users,int s);
+    List<Blog> findAllByStatus(int s);
     Blog findByBlogIdAndUsers(Long blogid, Users users);
-    List<Blog> findAllByTitleContainingOrContentContaining(String t, String c);
-
+    List<Blog> findAllByTitleContaining(String title);
 }

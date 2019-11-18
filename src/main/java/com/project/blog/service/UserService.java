@@ -19,9 +19,9 @@ public class UserService {
         return userRepository.findByUsername(username).get().getUserId();
     }
 
-    public String getUserRole(Long user_id, Principal principal) {
-        return  userRepository.findByUserId(user_id).getRole();//.getroleid();
-    }
+//    public String getUserRole(Long user_id, Principal principal) {
+//        return  userRepository.findByUserId(user_id).getRole();//.getroleid();
+//    }
 
     public Users getUserProfile(Long userid, Principal principal) {
         return userRepository.findByUserId(userid);

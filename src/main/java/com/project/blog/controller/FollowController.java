@@ -26,7 +26,7 @@ public class FollowController {
     @GetMapping("/f/{user_id}")
     @ResponseBody
     public List<Blog> follow(@PathVariable Long user_id, Principal principal){
-        return followService.follow(user_id,userService.getUserrId(principal),principal);
+         return followService.follow(user_id,userService.getUserrId(principal),principal);
     }
 
     @GetMapping("/list")
@@ -41,17 +41,22 @@ public class FollowController {
         return followService.blog(userService.getUserrId(principal),principal);
     }
 
-    @GetMapping("/following")
-    @ResponseBody
-    public int following(Principal principal){
-        return followService.totalFollowing(userService.getUserrId(principal),principal);
-    }
-
     @GetMapping(value = "/unfollow/{f_id}")
     @ResponseBody
     public List<Follow> unfollow(@PathVariable Long f_id, Principal principal) {
         return followService.unfollowUser(f_id,userService.getUserrId(principal),principal);
     }
 
+    @GetMapping(value = "/followers")
+    @ResponseBody
+    public List<Follow> followers(Principal principal) {
+        return followService.followers(userService.getUserrId(principal),principal);
+    }
 
+
+    @GetMapping(value = "/status/{user_id}")
+    @ResponseBody
+    public int status(@PathVariable Long user_id, Principal principal) {
+        return followService.status(user_id,userService.getUserrId(principal),principal);
+    }
 }

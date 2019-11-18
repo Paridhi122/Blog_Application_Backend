@@ -5,6 +5,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
 
 @Entity
 @Table(name="Users")
@@ -31,6 +32,33 @@ public class Users implements Serializable {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "image")
+    private String image;
+
+    @Column(name = "location")
+    private String location;
+
+    @Column(name = "dob")
+    private Date dob;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "instagram")
+    private String instagram;
+
+    @Column(name = "linkedin")
+    private String linkedin;
+
+    @Column(name = "twitter")
+    private String twitter;
+
+    @Column(name = "facebook")
+    private String facebook;
+
+    @Column(name = "gender")
+    private String gender;
 
     public Long getUserId() {
         return userId;
@@ -86,5 +114,77 @@ public class Users implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
+    }
+
+    public String getLinkedin() {
+        return linkedin;
+    }
+
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }
